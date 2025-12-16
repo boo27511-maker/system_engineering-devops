@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This script lists all non-hidden files and shows the part after the first dash if present
+
+for file in *; do
+  # Skip hidden files and directories
+  [ -f "$file" ] || continue
+  # If file has a dash, strip everything before it; else show full name
+  if [[ "$file" == *-* ]]; then
+    echo "${file#*-}"
+  else
+    echo "$file"
+  fi
+done
